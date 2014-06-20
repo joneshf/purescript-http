@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "PureScript HTTP bindings",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "purescript-control": "~0.1.1",
     "purescript-maybe": "~0.1.3",
     "purescript-strings": "~0.1.3",
