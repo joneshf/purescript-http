@@ -1,0 +1,10 @@
+{
+  "name": "purescript-http",
+  "version": "0.0.1",
+  "description": "PureScript HTTP bindings",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.1",
+    "gulp-purescript": "0.0.8"
+  }
+}
