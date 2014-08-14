@@ -1,14 +1,6 @@
 module Network.HTTP where
 
-
-  import Control.Apply
-
   import Data.Maybe
-  import Data.String
-
-  import Text.Parsing.Parser
-  import Text.Parsing.Parser.Combinators
-  import Text.Parsing.Parser.String
 
   data Verb = DELETE
             | GET
@@ -294,23 +286,3 @@ module Network.HTTP where
   number2Status 504 = Just GatewayTimeout
   number2Status 505 = Just HTTPVersionNotSupported
   number2Status _   = Nothing
-
-  -- TODO: Move these to purescript-parsing.
-  eol :: forall m. (Monad m) => ParserT String m String
-  eol = string "\n"
-  skipMany :: forall m s a. (Monad m) => ParserT s m a -> ParserT s m {}
-  skipMany s = many s *> pure {}
-  space :: forall m. (Monad m) => ParserT String m String
-  space = choice [ string " "
-                 , string "\t"
-                 ]
-  skipSpaces :: forall m. (Monad m) => ParserT String m {}
-  skipSpaces = skipMany space
-
-  parseHeader :: forall m. (Monad m) => ParserT String m Header
-  parseHeader = do
-    head <- many1 char <* string ":" <* skipSpaces
-    values <- many1 char <* eol
-    let head' = string2Head $ joinWith "" head
-    let values' = joinWith "" values
-    pure $ Header head' values'
