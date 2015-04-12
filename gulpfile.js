@@ -29,7 +29,7 @@ gulp.task('compile', function() {
 
 gulp.task('docs', function() {
     return gulp.src(paths.src)
-      .pipe(purescript.docgen())
+      .pipe(purescript.pscDocs())
       .pipe(gulp.dest(paths.docsDest));
 });
 
