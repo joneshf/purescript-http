@@ -326,3 +326,124 @@ module Network.HTTP where
   number2Status 504 = Just GatewayTimeout
   number2Status 505 = Just HTTPVersionNotSupported
   number2Status _   = Nothing
+
+  -- Status code aliases
+  status0 :: StatusCode
+  status0   = NoStatus
+
+  status100 :: StatusCode
+  status100 = Continue
+
+  status101 :: StatusCode
+  status101 = SwitchingProtocols
+
+  status200 :: StatusCode
+  status200 = Ok
+
+  status201 :: StatusCode
+  status201 = Created
+
+  status202 :: StatusCode
+  status202 = Accepted
+
+  status203 :: StatusCode
+  status203 = NonAuthoritativeInformation
+
+  status204 :: StatusCode
+  status204 = NoContent
+
+  status205 :: StatusCode
+  status205 = ResetContent
+
+  status206 :: StatusCode
+  status206 = PartialContent
+
+  status300 :: StatusCode
+  status300 = MultipleChoices
+
+  status301 :: StatusCode
+  status301 = MovedPermanently
+
+  status302 :: StatusCode
+  status302 = Found
+
+  status303 :: StatusCode
+  status303 = SeeOther
+
+  status304 :: StatusCode
+  status304 = NotModified
+
+  status305 :: StatusCode
+  status305 = UseProxy
+
+  status307 :: StatusCode
+  status307 = TemporaryRedirect
+
+  status400 :: StatusCode
+  status400 = BadRequest
+
+  status401 :: StatusCode
+  status401 = Unauthorized
+
+  status402 :: StatusCode
+  status402 = PaymentRequired
+
+  status403 :: StatusCode
+  status403 = Forbidden
+
+  status404 :: StatusCode
+  status404 = NotFound
+
+  status405 :: StatusCode
+  status405 = MethodNotAllowed
+
+  status406 :: StatusCode
+  status406 = NotAcceptable
+
+  status407 :: StatusCode
+  status407 = ProxyAuthenticationRequired
+
+  status408 :: StatusCode
+  status408 = RequestTimeout
+
+  status410 :: StatusCode
+  status410 = Gone
+
+  status411 :: StatusCode
+  status411 = LengthRequired
+
+  status412 :: StatusCode
+  status412 = PreconditionFailed
+
+  status413 :: StatusCode
+  status413 = RequestEntityTooLarge
+
+  status414 :: StatusCode
+  status414 = RequestURITooLong
+
+  status415 :: StatusCode
+  status415 = UnsupportedMediaType
+
+  status416 :: StatusCode
+  status416 = RequestedRangeNotSatisfiable
+
+  status417 :: StatusCode
+  status417 = ExpectationFailed
+
+  status500 :: StatusCode
+  status500 = InternalServerError
+
+  status501 :: StatusCode
+  status501 = NotImplemented
+
+  status502 :: StatusCode
+  status502 = BadGateway
+
+  status503 :: StatusCode
+  status503 = ServiceUnavailable
+
+  status504 :: StatusCode
+  status504 = GatewayTimeout
+
+  status505 :: StatusCode
+  status505 = HTTPVersionNotSupported
