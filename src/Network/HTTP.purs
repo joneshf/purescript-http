@@ -327,6 +327,124 @@ module Network.HTTP where
   number2Status 505 = Just HTTPVersionNotSupported
   number2Status _   = Nothing
 
+  -- Header helpers
+  accept :: String -> Header
+  accept = Header Accept
+
+  acceptCharset :: String -> Header
+  acceptCharset = Header AcceptCharset
+
+  acceptEncoding :: String -> Header
+  acceptEncoding = Header AcceptEncoding
+
+  acceptLanguage :: String -> Header
+  acceptLanguage = Header AcceptLanguage
+
+  allow :: String -> Header
+  allow = Header Allow
+
+  authorization :: String -> Header
+  authorization = Header Authorization
+
+  cacheControl :: String -> Header
+  cacheControl = Header CacheControl
+
+  connection :: String -> Header
+  connection = Header Connection
+
+  contentEncoding :: String -> Header
+  contentEncoding = Header ContentEncoding
+
+  contentLanguage :: String -> Header
+  contentLanguage = Header ContentLanguage
+
+  contentLength :: String -> Header
+  contentLength = Header ContentLength
+
+  contentLocation :: String -> Header
+  contentLocation = Header ContentLocation
+
+  contentMD5 :: String -> Header
+  contentMD5 = Header ContentMD5
+
+  contentRange :: String -> Header
+  contentRange = Header ContentRange
+
+  contentType :: String -> Header
+  contentType = Header ContentType
+
+  date :: String -> Header
+  date = Header Date
+
+  expect :: String -> Header
+  expect = Header Expect
+
+  expires :: String -> Header
+  expires = Header Expires
+
+  from :: String -> Header
+  from = Header From
+
+  host :: String -> Header
+  host = Header Host
+
+  ifMatch :: String -> Header
+  ifMatch = Header IfMatch
+
+  ifModifiedSince :: String -> Header
+  ifModifiedSince = Header IfModifiedSince
+
+  ifNoneMatch :: String -> Header
+  ifNoneMatch = Header IfNoneMatch
+
+  ifRange :: String -> Header
+  ifRange = Header IfRange
+
+  ifUnmodifiedSince :: String -> Header
+  ifUnmodifiedSince = Header IfUnmodifiedSince
+
+  lastModified :: String -> Header
+  lastModified = Header LastModified
+
+  maxForwards :: String -> Header
+  maxForwards = Header MaxForwards
+
+  pragma :: String -> Header
+  pragma = Header Pragma
+
+  proxyAuthorization :: String -> Header
+  proxyAuthorization = Header ProxyAuthorization
+
+  range :: String -> Header
+  range = Header Range
+
+  referer :: String -> Header
+  referer = Header Referer
+
+  tE :: String -> Header
+  tE = Header TE
+
+  trailer :: String -> Header
+  trailer = Header Trailer
+
+  transferEncoding :: String -> Header
+  transferEncoding = Header TransferEncoding
+
+  upgrade :: String -> Header
+  upgrade = Header Upgrade
+
+  userAgent :: String -> Header
+  userAgent = Header UserAgent
+
+  via :: String -> Header
+  via = Header Via
+
+  warning :: String -> Header
+  warning = Header Warning
+
+  customString :: String -> String -> Header
+  customString s = Header (Custom s)
+
   -- Status code aliases
   status0 :: StatusCode
   status0   = NoStatus
