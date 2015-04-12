@@ -189,6 +189,16 @@ module Network.HTTP where
     show Warning            = "Warning"
     show (Custom header)    = header
 
+  string2Verb :: String -> Maybe Verb
+  string2Verb "DELETE"  = Just DELETE
+  string2Verb "GET"     = Just GET
+  string2Verb "HEAD"    = Just HEAD
+  string2Verb "OPTIONS" = Just OPTIONS
+  string2Verb "PATCH"   = Just PATCH
+  string2Verb "POST"    = Just POST
+  string2Verb "PUT"     = Just PUT
+  string2Verb _         = Nothing
+
   string2Head :: String -> HeaderHead
   string2Head "Accept"              = Accept
   string2Head "Accept-Charset"      = AcceptCharset
