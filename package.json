@@ -4,7 +4,7 @@
   "description": "PureScript HTTP bindings",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.8.1",
-    "gulp-purescript": "0.0.8"
+    "gulp": "^3.8.11",
+    "gulp-purescript": "^0.3.1"
   }
 }

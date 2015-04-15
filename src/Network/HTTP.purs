@@ -106,7 +106,47 @@ module Network.HTTP where
   instance showHeader :: Show Header where
     show (Header head value) = show head ++ ": " ++ value
 
-  -- TODO: StatusCode need a show instance
+  instance showStatusCode :: Show StatusCode where
+    show NoStatus                     = "NoStatus"
+    show Accepted                     = "Accepted"
+    show BadGateway                   = "BadGateway"
+    show BadRequest                   = "BadRequest"
+    show Continue                     = "Continue"
+    show Created                      = "Created"
+    show ExpectationFailed            = "ExpectationFailed"
+    show Forbidden                    = "Forbidden"
+    show Found                        = "Found"
+    show GatewayTimeout               = "GatewayTimeout"
+    show Gone                         = "Gone"
+    show HTTPVersionNotSupported      = "HTTPVersionNotSupported"
+    show InternalServerError          = "InternalServerError"
+    show LengthRequired               = "LengthRequired"
+    show MethodNotAllowed             = "MethodNotAllowed"
+    show MovedPermanently             = "MovedPermanently"
+    show MultipleChoices              = "MultipleChoices"
+    show NoContent                    = "NoContent"
+    show NonAuthoritativeInformation  = "NonAuthoritativeInformation"
+    show NotAcceptable                = "NotAcceptable"
+    show NotFound                     = "NotFound"
+    show NotImplemented               = "NotImplemented"
+    show NotModified                  = "NotModified"
+    show Ok                           = "Ok"
+    show PartialContent               = "PartialContent"
+    show PaymentRequired              = "PaymentRequired"
+    show PreconditionFailed           = "PreconditionFailed"
+    show ProxyAuthenticationRequired  = "ProxyAuthenticationRequired"
+    show RequestedRangeNotSatisfiable = "RequestedRangeNotSatisfiable"
+    show RequestEntityTooLarge        = "RequestEntityTooLarge"
+    show RequestTimeout               = "RequestTimeout"
+    show RequestURITooLong            = "RequestURITooLong"
+    show ResetContent                 = "ResetContent"
+    show SeeOther                     = "SeeOther"
+    show ServiceUnavailable           = "ServiceUnavailable"
+    show SwitchingProtocols           = "SwitchingProtocols"
+    show TemporaryRedirect            = "TemporaryRedirect"
+    show Unauthorized                 = "Unauthorized"
+    show UnsupportedMediaType         = "UnsupportedMediaType"
+    show UseProxy                     = "UseProxy"
 
   instance showHeaderHead :: Show HeaderHead where
     show Accept             = "Accept"
@@ -148,6 +188,16 @@ module Network.HTTP where
     show Via                = "Via"
     show Warning            = "Warning"
     show (Custom header)    = header
+
+  string2Verb :: String -> Maybe Verb
+  string2Verb "DELETE"  = Just DELETE
+  string2Verb "GET"     = Just GET
+  string2Verb "HEAD"    = Just HEAD
+  string2Verb "OPTIONS" = Just OPTIONS
+  string2Verb "PATCH"   = Just PATCH
+  string2Verb "POST"    = Just POST
+  string2Verb "PUT"     = Just PUT
+  string2Verb _         = Nothing
 
   string2Head :: String -> HeaderHead
   string2Head "Accept"              = Accept
@@ -286,3 +336,242 @@ module Network.HTTP where
   number2Status 504 = Just GatewayTimeout
   number2Status 505 = Just HTTPVersionNotSupported
   number2Status _   = Nothing
+
+  -- Header helpers
+  accept :: String -> Header
+  accept = Header Accept
+
+  acceptCharset :: String -> Header
+  acceptCharset = Header AcceptCharset
+
+  acceptEncoding :: String -> Header
+  acceptEncoding = Header AcceptEncoding
+
+  acceptLanguage :: String -> Header
+  acceptLanguage = Header AcceptLanguage
+
+  allow :: String -> Header
+  allow = Header Allow
+
+  authorization :: String -> Header
+  authorization = Header Authorization
+
+  cacheControl :: String -> Header
+  cacheControl = Header CacheControl
+
+  connection :: String -> Header
+  connection = Header Connection
+
+  contentEncoding :: String -> Header
+  contentEncoding = Header ContentEncoding
+
+  contentLanguage :: String -> Header
+  contentLanguage = Header ContentLanguage
+
+  contentLength :: String -> Header
+  contentLength = Header ContentLength
+
+  contentLocation :: String -> Header
+  contentLocation = Header ContentLocation
+
+  contentMD5 :: String -> Header
+  contentMD5 = Header ContentMD5
+
+  contentRange :: String -> Header
+  contentRange = Header ContentRange
+
+  contentType :: String -> Header
+  contentType = Header ContentType
+
+  date :: String -> Header
+  date = Header Date
+
+  expect :: String -> Header
+  expect = Header Expect
+
+  expires :: String -> Header
+  expires = Header Expires
+
+  from :: String -> Header
+  from = Header From
+
+  host :: String -> Header
+  host = Header Host
+
+  ifMatch :: String -> Header
+  ifMatch = Header IfMatch
+
+  ifModifiedSince :: String -> Header
+  ifModifiedSince = Header IfModifiedSince
+
+  ifNoneMatch :: String -> Header
+  ifNoneMatch = Header IfNoneMatch
+
+  ifRange :: String -> Header
+  ifRange = Header IfRange
+
+  ifUnmodifiedSince :: String -> Header
+  ifUnmodifiedSince = Header IfUnmodifiedSince
+
+  lastModified :: String -> Header
+  lastModified = Header LastModified
+
+  maxForwards :: String -> Header
+  maxForwards = Header MaxForwards
+
+  pragma :: String -> Header
+  pragma = Header Pragma
+
+  proxyAuthorization :: String -> Header
+  proxyAuthorization = Header ProxyAuthorization
+
+  range :: String -> Header
+  range = Header Range
+
+  referer :: String -> Header
+  referer = Header Referer
+
+  tE :: String -> Header
+  tE = Header TE
+
+  trailer :: String -> Header
+  trailer = Header Trailer
+
+  transferEncoding :: String -> Header
+  transferEncoding = Header TransferEncoding
+
+  upgrade :: String -> Header
+  upgrade = Header Upgrade
+
+  userAgent :: String -> Header
+  userAgent = Header UserAgent
+
+  via :: String -> Header
+  via = Header Via
+
+  warning :: String -> Header
+  warning = Header Warning
+
+  customString :: String -> String -> Header
+  customString s = Header (Custom s)
+
+  -- Status code aliases
+  status0 :: StatusCode
+  status0   = NoStatus
+
+  status100 :: StatusCode
+  status100 = Continue
+
+  status101 :: StatusCode
+  status101 = SwitchingProtocols
+
+  status200 :: StatusCode
+  status200 = Ok
+
+  status201 :: StatusCode
+  status201 = Created
+
+  status202 :: StatusCode
+  status202 = Accepted
+
+  status203 :: StatusCode
+  status203 = NonAuthoritativeInformation
+
+  status204 :: StatusCode
+  status204 = NoContent
+
+  status205 :: StatusCode
+  status205 = ResetContent
+
+  status206 :: StatusCode
+  status206 = PartialContent
+
+  status300 :: StatusCode
+  status300 = MultipleChoices
+
+  status301 :: StatusCode
+  status301 = MovedPermanently
+
+  status302 :: StatusCode
+  status302 = Found
+
+  status303 :: StatusCode
+  status303 = SeeOther
+
+  status304 :: StatusCode
+  status304 = NotModified
+
+  status305 :: StatusCode
+  status305 = UseProxy
+
+  status307 :: StatusCode
+  status307 = TemporaryRedirect
+
+  status400 :: StatusCode
+  status400 = BadRequest
+
+  status401 :: StatusCode
+  status401 = Unauthorized
+
+  status402 :: StatusCode
+  status402 = PaymentRequired
+
+  status403 :: StatusCode
+  status403 = Forbidden
+
+  status404 :: StatusCode
+  status404 = NotFound
+
+  status405 :: StatusCode
+  status405 = MethodNotAllowed
+
+  status406 :: StatusCode
+  status406 = NotAcceptable
+
+  status407 :: StatusCode
+  status407 = ProxyAuthenticationRequired
+
+  status408 :: StatusCode
+  status408 = RequestTimeout
+
+  status410 :: StatusCode
+  status410 = Gone
+
+  status411 :: StatusCode
+  status411 = LengthRequired
+
+  status412 :: StatusCode
+  status412 = PreconditionFailed
+
+  status413 :: StatusCode
+  status413 = RequestEntityTooLarge
+
+  status414 :: StatusCode
+  status414 = RequestURITooLong
+
+  status415 :: StatusCode
+  status415 = UnsupportedMediaType
+
+  status416 :: StatusCode
+  status416 = RequestedRangeNotSatisfiable
+
+  status417 :: StatusCode
+  status417 = ExpectationFailed
+
+  status500 :: StatusCode
+  status500 = InternalServerError
+
+  status501 :: StatusCode
+  status501 = NotImplemented
+
+  status502 :: StatusCode
+  status502 = BadGateway
+
+  status503 :: StatusCode
+  status503 = ServiceUnavailable
+
+  status504 :: StatusCode
+  status504 = GatewayTimeout
+
+  status505 :: StatusCode
+  status505 = HTTPVersionNotSupported
