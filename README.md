@@ -161,14 +161,14 @@ string2Head :: String -> HeaderHead
 #### `status2Number`
 
 ``` purescript
-status2Number :: StatusCode -> Number
+status2Number :: StatusCode -> Int
 ```
 
 
 #### `number2Status`
 
 ``` purescript
-number2Status :: Number -> Maybe StatusCode
+number2Status :: Int -> Maybe StatusCode
 ```
 
 
