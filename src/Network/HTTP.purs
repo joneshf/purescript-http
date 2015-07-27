@@ -1,5 +1,7 @@
 module Network.HTTP where
 
+  import Prelude
+
   import Data.Maybe
 
   data Verb = DELETE
@@ -240,9 +242,9 @@ module Network.HTTP where
   string2Head "Warning"             = Warning
   string2Head header                = (Custom header)
 
-  status2Number :: StatusCode -> Number
+  status2Number :: StatusCode -> Int
   -- 0 Default status for unsent requests
-  status2Number NoStatus                          = 0
+  status2Number NoStatus                     = 0
   -- 100 Informational
   status2Number Continue                     = 100
   status2Number SwitchingProtocols           = 101
@@ -288,7 +290,7 @@ module Network.HTTP where
   status2Number GatewayTimeout               = 504
   status2Number HTTPVersionNotSupported      = 505
 
-  number2Status :: Number -> Maybe StatusCode
+  number2Status :: Int -> Maybe StatusCode
   -- 0 Default status for unsent requests
   number2Status 0   = Just NoStatus
   -- 100 Informational

@@ -4,6 +4,6 @@
   "description": "PureScript HTTP bindings",
   "license": "MIT",
   "dependencies": {
-    "purescript-maybe": "~0.2.2"
+    "purescript-maybe": "~0.3.2"
   }
 }
