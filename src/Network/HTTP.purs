@@ -2,7 +2,7 @@ module Network.HTTP where
 
   import Prelude
 
-  import Data.Maybe
+  import Data.Maybe (Maybe(..))
 
   data Verb = DELETE
             | GET
@@ -106,7 +106,7 @@ module Network.HTTP where
     show PUT     = "PUT"
 
   instance showHeader :: Show Header where
-    show (Header head value) = show head ++ ": " ++ value
+    show (Header head value) = show head <> ": " <> value
 
   instance showStatusCode :: Show StatusCode where
     show NoStatus                     = "NoStatus"
