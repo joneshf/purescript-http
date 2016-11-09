@@ -1,6 +1,6 @@
 {
   "name": "purescript-http",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "PureScript HTTP bindings",
   "license": "MIT",
   "dependencies": {
