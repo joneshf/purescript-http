@@ -10,4 +10,4 @@ bower i purescript-http
 
 ## Documentation
 
-- [Network.HTTP](docs/Network/HTTP.md)
+Module documentation is [published on Pursuit](https://pursuit.purescript.org/packages/purescript-http).
